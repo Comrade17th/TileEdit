@@ -21,19 +21,13 @@ public class GoPlaces : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position , point.position, _speed * Time.deltaTime);
 
         if (transform.position == point.position)  
-            NextPointTakerLogic();
+            NextPoint();
     }
 
-    public Vector3 NextPointTakerLogic(){
+    private void NextPoint(){
         _currentPoint++;
 
         if (_currentPoint == _points.Length)
             _currentPoint = 0;
-
-        // useless block?
-        Vector3 thisPointVector = _points[_currentPoint].transform.position;
-        transform.forward = thisPointVector - transform.position;
-
-        return thisPointVector;   
     }
 }
