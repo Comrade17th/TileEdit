@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1996101037737981739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: 0, z: 0}
+  m_LocalPosition: {x: -9.41, y: 10.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -148,9 +148,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 1326300040571089134, guid: 56e632ceb665948aba438ed9e9c76e73, type: 3}
   _delay: 2
   _repeatRate: 2
-  _moveDirections:
-  - {fileID: 8626777650991305982}
-  - {fileID: 6800917090289378137}
+  _targets: []
   _spawnPoints:
   - {fileID: 4640667651232738709}
   - {fileID: 482510270124789454}
@@ -245,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 6808560044889431248}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 4.47, y: 10.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
