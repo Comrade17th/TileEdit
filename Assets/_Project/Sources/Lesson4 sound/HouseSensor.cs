@@ -7,13 +7,13 @@ public class HouseSensor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.transform.GetComponent<Thief>()) 
+        if (collider.transform.TryGetComponent<Thief>(out Thief thief)) 
             _alarm.TurnOn();
     }
 
     private void OnTriggerExit(Collider collider) 
     {
-        if (collider.transform.GetComponent<Thief>()) 
+        if (collider.transform.TryGetComponent<Thief>(out Thief thief)) 
             _alarm.TurnOff();
     }
 }
