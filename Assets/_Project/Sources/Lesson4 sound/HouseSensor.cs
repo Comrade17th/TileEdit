@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class HouseSensor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Alarm _alarm;
+
+    private void OnTriggerEnter(Collider collider)
     {
-        
+        if (collider.transform.GetComponent<Thief>()) 
+            _alarm.TurnOn();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider collider) 
     {
-        
+        if (collider.transform.GetComponent<Thief>()) 
+            _alarm.TurnOff();
     }
 }

@@ -6,7 +6,7 @@ public class Alarm : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
 
-    [SerializeField] private int _changesPerSecond = 10;
+    [SerializeField, Min(1)] private int _changesPerSecond = 10;
 
     [SerializeField] private float _maxSeconds = 5.0f;
 
@@ -18,31 +18,13 @@ public class Alarm : MonoBehaviour
 
     private void Start() {
         _changeRate = _maxVolume / (_maxSeconds * _changesPerSecond);
+        _secondsPerChange = _maxSeconds / (_maxVolume / _changeRate);
         _audioSource.volume = _minVolume;
     }
 
-    // private void OnTriggerEnter(Collider collider)
-    // {
-    //     if (collider.transform.GetComponent<Thief>()) 
-    //     {
-    //         Debug.Log("Thief entered");
-    //         _isIncreasing = true;
-
-    //         _audioSource.Play();
-    //         InvokeRepeating(nameof(ChangeVolume), _delay, _repeatRate);
-    //     }
-    // }
-
-    // private void OnTriggerExit(Collider collider) 
-    // {
-    //     if (collider.transform.GetComponent<Thief>()) 
-    //     {
-    //         Debug.Log("Thief exit");
-    //         _isIncreasing = false;
-    //     }
-    // }
-
     public void TurnOn(){
+        _audioSource.Play();
+
         if(_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -58,17 +40,14 @@ public class Alarm : MonoBehaviour
 
     private IEnumerator ChangeVolume(float targetVolume) 
     {
-        if (_audioSource.volume > targetVolume)
-            _changeRate = Mathf.Abs(_changeRate);
-        else
-            _changeRate = -Mathf.Abs(_changeRate);
-
         while (_audioSource.volume != targetVolume) 
         {
             _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, targetVolume, _changeRate);
-            Debug.Log($"Volume: {_audioSource.volume}");
             yield return new WaitForSeconds(_secondsPerChange);
         }
+
+        if(_audioSource.volume == _minVolume)
+            _audioSource.Stop();
 
         yield break;
     }
