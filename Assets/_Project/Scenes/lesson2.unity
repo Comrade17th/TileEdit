@@ -20175,8 +20175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 195933391}
-  _changeRate: 10
-  _repeatRate: 0.3
+  _changeRate: 5
+  _repeatRate: 0.5
 --- !u!65 &1733501664
 BoxCollider:
   m_ObjectHideFlags: 0
